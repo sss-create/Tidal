@@ -22,19 +22,27 @@ let mTarget :: Target
       , oBusPort   = Nothing
       }
 
+    cv1 = pF "cv1"
+    cv2 = pF "cv2"
+
     tidalShape :: OSC
-    tidalShape = OSC "/tidal" $ Named {requiredArgs = ["s"]}
+    tidalShape = OSC "/tidal" $ 
+      ArgList [ ("n"  , Nothing)
+              , ("cv1", Just $ VF 0) 
+              , ("cv2", Just $ VF 0) 
+              , ("s"  , Nothing)
+              ]
 
     mOsc :: OscMap
     mOsc = [(mTarget, [tidalShape])]
 
     -- turing machine, outside value as steps, <~ shifts in time
-    turing steps len shift = outside steps (repeatCycles len) $ shift <~ rand
+    turing steps len shift = outside steps (repeatCycles len) $ shift <~ irand 127
 
     -- blofeld = "blofeld"
 
     -- mininotation microtonality:
-    -- edo19 = 
+    edo n = 1200/n
 :}
 
 -- Create a Tidal Stream 
