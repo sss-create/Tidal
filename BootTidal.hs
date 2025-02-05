@@ -49,6 +49,9 @@ let mTarget :: Target
 tidalInst <- mkTidalWith defaultConfig mOsc
 instance Tidally where tidal = tidalInst
 
+-- ableton link
+streamEnableLink tidal
+
 :set -fwarn-orphans
 :set prompt "tidal> "
 :set prompt-cont ""
