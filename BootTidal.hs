@@ -24,13 +24,17 @@ let mTarget :: Target
 
     cv1 = pF "cv1"
     cv2 = pF "cv2"
+    cv3 = pF "cv3"
+    cv4 = pF "cv4"
 
     tidalShape :: OSC
     tidalShape = OSC "/tidal" $ 
-      ArgList [ ("n"  , Nothing)
+      ArgList [ ("s"  , Nothing)
+              , ("n"  , Nothing)
               , ("cv1", Just $ VF 0) 
               , ("cv2", Just $ VF 0) 
-              , ("s"  , Nothing)
+              , ("cv3", Just $ VF 0) 
+              , ("cv4", Just $ VF 0) 
               ]
 
     mOsc :: OscMap

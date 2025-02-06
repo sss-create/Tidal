@@ -1,5 +1,7 @@
 -- This is an example file you can use to quickly test Tidal editor integration.
 
+setbpm 142
+
 d1 $ s "bd sd bd [~ sd] bd sd bd*3 sd"
 
 d1 $ fast 2 $ n (scale "major" "0 2 8 3" |+ 40) # s "t"
@@ -30,7 +32,25 @@ d1 $ n (toScale [9,5,19,14] "2|0 0 [1 0 2] <0 3>")
 
 hush
 
-d1 $ n ("0 0 0") # s "t"
+d1 $ euclid 5 16 $ n "36" # s "wolf"
+
+d2 $ euclid 5 16 $ n "f1" # s "wbass"
+
+d3 $ n "42*16" # s "wolf"
+
+d2 $ n "- 38*2 40*8" # s "wolf"
+
+d4 $ fast 2 $ n "~ 38" # s "wolf"
+
+d4 $ n "gs1*4 f1 c2 f1*2" # s "wbass"
+
+d5 $ swingBy 0.2 8
+  $ n "f5 <[f1 fs3]*2 [fs8|fs9] ~ > c4|c3 f1*2" # s "other"
+  # cv1 (normal * 2)
+  # cv2 normal
+
+d4 $ silence
+
 
 d1 $ n ("0 0 0") # s "t"
 
@@ -40,5 +60,15 @@ d1 $ fast 8 $ n (irand 127) # s "t"
 
 d1 $ fast 6 $ n ((1200/19)*"<1 9 3 1 [16 17] 3>") # s "t"
 
+d1 $ fast 6 $ n "f3 fs3 c2"
+
+d5 $ slow 4 $ n "- f2'min - c2'maj" 
+  # cv1 90
+  # s "blofeld"
+
+d5 $ fast 4 $ n "f3 fs3 c2"
+  # s "blofeld"
+  # cv1 "4 8 299 2"
+  # cv2 (rev $ "4 8 299 2")
 
 hush
